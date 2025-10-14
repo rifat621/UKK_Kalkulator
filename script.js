@@ -23,7 +23,15 @@ function clearDisplay() {
 function calculate() {
     const display = document.getElementById('display');
     try {
-        display.value = eval(display.value);
+        const result = eval(display.value);
+        
+        // Cek pembagian dengan nol
+        if (!isFinite(result)) {
+            display.value = "Tidak bisa";
+            return;
+        }
+        
+        display.value = result;
     } catch {
         display.value = "ERROR";
     }
